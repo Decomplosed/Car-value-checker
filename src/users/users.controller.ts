@@ -37,13 +37,11 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
-  }
-
-  @Get()
   findAllUsers(@Query('email') email: string) {
-    return this.usersService.findByEmail(email);
+    if (email) {
+      return this.usersService.findByEmail(email);
+    }
+    return this.usersService.findAll();
   }
 
   @Delete('/:id')
