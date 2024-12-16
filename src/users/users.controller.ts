@@ -27,6 +27,9 @@ export class UsersController {
 
   @Get('/whoami')
   whoAmI(@Session() session: any) {
+    if (!session.userId) {
+      return new NotFoundException('User not logged in.');
+    }
     return this.usersService.findOne(session.userId);
   }
 
