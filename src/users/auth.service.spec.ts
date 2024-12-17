@@ -4,7 +4,9 @@ import { UsersService } from './users.service';
 import { User } from './user.entity';
 
 describe('AuthService', () => {
-  it('can create an instance of auth service', async () => {
+  let service: AuthService;
+
+  beforeEach(async () => {
     const mockedUsersService: Partial<UsersService> = {
       findByEmail: () => Promise.resolve([]),
       create: (email: string, password: string) =>
@@ -17,8 +19,10 @@ describe('AuthService', () => {
       ],
     }).compile();
 
-    const service = module.get(AuthService);
+    service = module.get(AuthService);
+  });
 
+  it('can create an instance of auth service', async () => {
     expect(service).toBeDefined();
   });
 });
