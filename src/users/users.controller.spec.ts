@@ -6,10 +6,18 @@ import { User } from './user.entity';
 
 describe('UsersController', () => {
   let controller: UsersController;
-  let mockedUserService: Partial<UsersService>;
+  let mockedUsersService: Partial<UsersService>;
   let mockedAuthService: Partial<AuthService>;
 
   beforeEach(async () => {
+    mockedUsersService = {
+      findOne: () => {},
+      findByEmail: () => {},
+    };
+    mockedAuthService = {
+      signup: () => {},
+      signin: () => {},
+    };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
     }).compile();
