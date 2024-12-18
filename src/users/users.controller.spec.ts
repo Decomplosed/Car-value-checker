@@ -50,4 +50,9 @@ describe('UsersController', () => {
     expect(users.length).toEqual(1);
     expect(users[0].email).toEqual('asdf@asdf.com');
   });
+
+  it('findUser returns a single user with the given id', async () => {
+    const user = await controller.findUser('1');
+    expect(user).toBeDefined();
+  });
 });
