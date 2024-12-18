@@ -11,12 +11,22 @@ describe('UsersController', () => {
 
   beforeEach(async () => {
     mockedUsersService = {
-      findOne: () => {},
-      findByEmail: () => {},
+      findOne: (id: number) => {
+        return Promise.resolve({
+          id,
+          email: 'asdf@asdf.com',
+          password: 'asdf',
+        });
+      },
+      findByEmail: (email: string) => {
+        return Promise.resolve([{ id: 1, email, password: 'asdf' }]);
+      },
+      // remove: () => {},
+      // update: () => {},
     };
     mockedAuthService = {
-      signup: () => {},
-      signin: () => {},
+      // signup: () => {},
+      // signin: () => {},
     };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
