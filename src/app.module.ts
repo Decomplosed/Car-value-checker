@@ -35,10 +35,12 @@ const cookieSession = require('cookie-session');
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(
-      cookieSession({
-        keys: ['test123'],
-      }),
-    );
+    consumer
+      .apply(
+        cookieSession({
+          keys: ['test123'],
+        }),
+      )
+      .forRoutes('*');
   }
 }
