@@ -7,5 +7,7 @@ export class ReportsController {
   constructor(private reportsService: ReportsService) {}
 
   @Post()
-  createReport(@Body() body: CreateReportDto) {}
+  createReport(@Body() body: CreateReportDto) {
+    return this.reportsService.create(body);
+  }
 }
