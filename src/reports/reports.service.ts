@@ -22,6 +22,7 @@ export class ReportsService {
       .andWhere('year - :year BETWEEN -3 AND 3', { year })
       .orderBy('ABS(mileage - :mileage)', 'DESC')
       .setParameters({ mileage })
+      .limit(3)
       .getRawMany();
   }
 
