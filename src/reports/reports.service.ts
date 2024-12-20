@@ -23,7 +23,7 @@ export class ReportsService {
       .orderBy('ABS(mileage - :mileage)', 'DESC')
       .setParameters({ mileage })
       .limit(3)
-      .getRawMany();
+      .getRawOne();
   }
 
   create(reportDto: CreateReportDto, user: User) {
