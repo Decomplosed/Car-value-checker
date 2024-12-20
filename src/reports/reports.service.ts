@@ -11,7 +11,11 @@ export class ReportsService {
   constructor(@InjectRepository(Report) private repo: Repository<Report>) {}
 
   createEstimate(estimateDto: GetEstimateDto) {
-    return this.repo.createQueryBuilder().select('*').getRawMany();
+    return this.repo
+      .createQueryBuilder()
+      .select('*')
+      .where('make = :make', { make: estimateDto.make })
+      .getRawMany();
   }
 
   create(reportDto: CreateReportDto, user: User) {
