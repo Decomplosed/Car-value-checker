@@ -1,3 +1,4 @@
+import { Transform } from 'class-transformer';
 import {
   IsLatitude,
   IsLongitude,
@@ -14,6 +15,7 @@ export class GetEstimateDto {
   @IsString()
   model: string;
 
+  @Transform(({ value }) => parseInt(value))
   @IsNumber()
   @Min(1930)
   @Max(2050)
