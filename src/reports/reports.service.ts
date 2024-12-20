@@ -21,5 +21,8 @@ export class ReportsService {
     if (!report) {
       throw new NotFoundException('Report not found');
     }
+
+    report.approved = approved;
+    return this.repo.save(report);
   }
 }
