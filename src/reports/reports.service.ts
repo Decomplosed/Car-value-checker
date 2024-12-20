@@ -14,7 +14,7 @@ export class ReportsService {
     const { make, model, lng, lat, year, mileage } = estimateDto;
     return this.repo
       .createQueryBuilder()
-      .select('*')
+      .select('AVG(price)', 'price')
       .where('make = :make', { make })
       .andWhere('model = :model', { model })
       .andWhere('lng - :lng BETWEEN -5 AND 5', { lng })
